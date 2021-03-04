@@ -4,10 +4,11 @@ env:
   global:
   - BUILD_NAME=Perrinn424-webgl
   - secure: gjMhTDn+3AnDPsnkc/aQUgfVKn7xf8VQt/ScjWMfd+476mZRW5UPnkPtG9/8/djKQeWl2g++p4rFL19PxGB9MXxY3ylsNvE0bCAn9xyI75+5Mszh0xS9E6k5GICjqJLd0gAfUWm6sY4ukoMxBg0k7duyj6/fhwxYtHuJral4qU4KH+NdGpP0xqC7zw8gT0Ze4aBHqr36HEbMAE+YN8vuJauOSZqwM2SYQ6CTmN1MXw2S6n2LCh3OQKw64zQhshn0ieZ11yFjlKfxUXVK+C/FDlSoYoLByDbhGvKMPq0w2eUT30Dc4WuzYmD0WStbU7tMI7ZjyKcSzmU6NsAHnlkPYJojXOd4YU09rFtlEBw+40TNN86N7I5VeGN98BmJ+XCqYc5ffBxcGMb7qRQyjjCQPjTpa776HIFhVWGOSSbN3qC7Rpd1v8O7DXhTnBCxFTBEL8ol+uCmNXzcdR0e4efiE/zCCop/HUwsOlDndhIFtHozWgsqpSw5Vx8+kfR8BIEV1hHpPNJG8PoYhGm9sEsToH9M+EumvpLBnsV8DYvgchFdGVxU+vQn0UAFRjD6PH0Vuda3g5ydj+ZjEC8rZaqAlBDfAzHLsNeXuQ64UTxFBFXdvaMupvoDaYOLhAx8VOjtNdCqb+A0kqTBhY8Fr71h4fQ1d5WnOdMwp8oCrufaSXQ=
+  - secure: VQmKzPYvoF2hy2ipx+ztSIsYLe/fwtogx/sVEiLySnrvrFq8via0JB4J1jed5rmO1gMoG4X+J+6YOMnBfjS9307T7CnAM2+n9q0Q2LFxyZTAczMrwXGKWKfYBOIZKBvkqJc4JbjXLfH3VL/k1uw2NqPudVuCf0aELV01A+3NoPE5Rr3gxqo2/Z7GR02UtxyUC3WwWChPV9bHy7pGU1sXTrmVHprPetbelHT0kkVVtfS/W3Bqem1ocu3PRVEggRhz7xAEdy3d5Rc/qtPNNXNTABeuXGOTqvo6rsFiMln+vjr4DUB+0JB2lhf3aZbuqQl8Q6fliLpllDkEvqA8CAkPIgJ4qpjo1TjfUqYzelQILPRLzLgtILQqsmbfVMOU95rUIUjxjKbBKSWBIFUlXotwJtY75tkKTUoCdoR//UVWNuulxGTXd8a+Wo04XGkBO0pgcDL5RvrDGsKV+eHmNXLfg8iRr6aaAVpL3z6E0geDkQpVma7d9phHZYdQlee+PODl9RWTI7jP7//QLEZgKMVXUuQu+/j/DRpsLgiypsb2an9++Y2k5fJBfH9+sV8MCLygxz6Pc7omlkVACrmfxCvFUwgjBR/UH02lv7Hd3ZbWP7LKz5gt5Bam78fvQwVt4CwnU2CGIbVqxIUbB/RedlFzuLOgtgJJE5AYNE4IZgFxTuo=
 services:
 - docker
 before_install:
-- openssl aes-256-cbc -K $enck -iv 0 -in Unity_v2019.x.ulf.enc -out ./Unity_v2019.x.ulf -d
+- openssl aes-256-cbc -K $encrypted_ce143bb546cb_key -iv $encrypted_ce143bb546cb_iv -in Unity_v2019.x.ulf.enc -out ./Unity_v2019.x.ulf -d
 - export UNITY_LICENSE=`cat Unity_v2019.x.ulf`
 - rm Unity_v2019.x.ulf
 - docker pull $IMAGE_NAME
