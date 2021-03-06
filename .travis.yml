@@ -19,6 +19,6 @@ jobs:
     env: BUILD_TARGET=WebGL IMAGE_NAME=gableroux/unity3d:2019.4.14f1-webgl
     script: chmod +x ./ci/*.sh && ./ci/docker_build.sh
   - stage: deploy
-    env: BUILD_TARGET=WebGL IMAGE_NAME=buildo/alpine-ssh:latest DEPLOYMENT_TARGET_USER=$deployment_target_user DEPLOYMENT_TARGET_ADDRESS=$deployment_target_address DEPLOYMENT_TARGET_PATH=$deployment_target_path
+    env: BUILD_TARGET=WebGL IMAGE_NAME=buildo/alpine-ssh:latest DEPLOYMENT_TARGET_USER=$deployment_target_user DEPLOYMENT_TARGET_ADDRESS=$deployment_target_address DEPLOYMENT_TARGET_PATH=$deployment_target_path DEPLOYMENT_TARGET_PASSWORD=$deployment_target_password
     script: chmod +x ./ci/docker_deploy.sh && ./ci/docker_deploy.sh
 
