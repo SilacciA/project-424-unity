@@ -20,5 +20,5 @@ jobs:
     script: chmod +x ./ci/*.sh && ./ci/docker_build.sh
   - stage: deploy
     env: BUILD_TARGET=WebGL
-    script: scp -r Builds/$BUILD_TARGET/$BUILD_NAME/Build $deployment_target_user@$deployment_target_address:$deployment_target_path
+    script: chmod +x ./ci/docker_deploy.sh && ,/ci/docker_deploy.sh
 
