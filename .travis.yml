@@ -18,3 +18,7 @@ jobs:
   - stage: build
     env: BUILD_TARGET=WebGL IMAGE_NAME=gableroux/unity3d:2019.4.14f1-webgl
     script: chmod +x ./ci/*.sh && ./ci/docker_build.sh
+  - stage: deploy
+    env: BUILD_TARGET=WebGL
+    script: scp -r Builds/$BUILD_TARGET/$BUILD_NAME/Build $deployment_target_user@$deployment_target_address:$deployment_target_path
+
