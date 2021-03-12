@@ -16,7 +16,7 @@ before_install:
 jobs:
   include:
   - stage: build
-    env: BUILD_TARGET=WebGL IMAGE_NAME=gableroux/unity3d:2019.4.14f1-webgl DEPLOYMENT_TARGET_USER=$deployment_target_user DEPLOYMENT_TARGET_ADDRESS=$deployment_target_address DEPLOYMENT_TARGET_PATH=$deployment_target_path DEPLOYMENT_TARGET_PASSWORD=$deployment_target_password
+    env: BUILD_TARGET=WebGL IMAGE_NAME=gableroux/unity3d:2019.4.14f1-webgl BUILD_OPTIONS=(BuildOptions.Development) DEPLOYMENT_TARGET_USER=$deployment_target_user DEPLOYMENT_TARGET_ADDRESS=$deployment_target_address DEPLOYMENT_TARGET_PATH=$deployment_target_path DEPLOYMENT_TARGET_PASSWORD=$deployment_target_password
     script: chmod +x ./ci/*.sh && ./ci/docker_build.sh && ./ci/deploy.sh
     addons:
       apt:
