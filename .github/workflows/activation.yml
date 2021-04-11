@@ -19,7 +19,7 @@ jobs:
         id: getManualLicenseFile
         uses: game-ci/unity-request-activation-file@v2
         with:
-          unityVersion: $ {{ matrix.unityVersion }}
+          unityVersion: ${{ matrix.unityVersion }}
       - name: Uploading License in artficats
         uses: actions/upload-artifact@v1
         with:
