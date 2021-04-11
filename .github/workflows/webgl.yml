@@ -53,3 +53,22 @@ jobs:
         with:
           name: Build
           path: build
+      - name: Abort Tweak
+        env:
+          BUILD_TARGET: ${{ matrix.targetPlatform }}
+          BUILD_NAME: ${{ matrix.buildName }}
+        run: |
+          mv "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb" "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup"
+          sed -e '/abort("To use dlopen/ s/^#*/\/\//' "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup" > "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb"
+      - name: Deployment
+        uses: appleboy/scp-action@master
+        env:
+          BUILD_TARGET: ${{ matrix.targetPlatform }}
+          BUILD_NAME: ${{ matrix.buildName }}
+        with:
+          host: ${{ secrets.DEPLOYMENT_TARGET_ADDRESS }}
+          username: ${{ secrets.DEPLOYMENT_TARGET_USER }}
+          password: ${{ secrets.DEPLOYMENT_TARGET_PASSWORD }}
+          port: 22
+          source: "build/$BUILD_TARGET/$BUILD_NAME/Build"
+          target: ${{ DEPLOYMENT_TARGET_PATH }}
