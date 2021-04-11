@@ -26,6 +26,8 @@ jobs:
           - 2019.4.14f1
         targetPlatform:
           - WebGL
+        buildName:
+          - Perrinn-424-webgl
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -46,6 +48,7 @@ jobs:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
+          buildName: ${{ matrix.buildName }}
       - uses: actions/upload-artifact@v2
         with:
           name: Build
