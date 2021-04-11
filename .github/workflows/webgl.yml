@@ -35,7 +35,7 @@ jobs:
           lfs: true
       - uses: actions/cache@v2
         with:
-          name: ${{ matrix.projectPath }}/Library
+          path: ${{ matrix.projectPath }}/Library
           key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
           restore-keys: |
             Library-${{ matrix.projectPath }}-
