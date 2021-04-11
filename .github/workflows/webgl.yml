@@ -58,6 +58,7 @@ jobs:
           BUILD_TARGET: ${{ matrix.targetPlatform }}
           BUILD_NAME: ${{ matrix.buildName }}
         run: |
+          sudo chown -R $USER:$USER build/$BUILD_TARGET/$BUILD_NAME/Build
           mv "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb" "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup"
           sed -e '/abort("To use dlopen/ s/^#*/\/\//' "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup" > "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb"
       - name: Deployment
