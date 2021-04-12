@@ -58,6 +58,7 @@ jobs:
           BUILD_TARGET: ${{ matrix.targetPlatform }}
           BUILD_NAME: ${{ matrix.buildName }}
         run: |
+          echo $PWD
           ls -al build/$BUILD_TARGET/$BUILD_NAME
           sudo chown -R $USER:$USER build/$BUILD_TARGET/$BUILD_NAME/Build
           mv "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb" "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup"
