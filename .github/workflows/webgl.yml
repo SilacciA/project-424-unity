@@ -58,13 +58,10 @@ jobs:
           BUILD_TARGET: ${{ matrix.targetPlatform }}
           BUILD_NAME: ${{ matrix.buildName }}
         run: |
-          ls -al .
-          ls -al build/
-          ls -al build/$BUILD_TARGET/
           ls -al build/$BUILD_TARGET/$BUILD_NAME
-          sudo chown -R $USER:$USER /github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build
-          mv "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb" "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup"
-          sed -e '/abort("To use dlopen/ s/^#*/\/\//' "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup" > "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb"
+          sudo chown -R $USER:$USER build/$BUILD_TARGET/$BUILD_NAME/Build
+          mv "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb" "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup"
+          sed -e '/abort("To use dlopen/ s/^#*/\/\//' "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup" > "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb"
       - name: Deployment
         uses: garygrossgarten/github-action-scp@release
         env:
@@ -76,5 +73,5 @@ jobs:
           username: ${{ secrets.DEPLOYMENT_TARGET_USER }}
           password: ${{ secrets.DEPLOYMENT_TARGET_PASSWORD }}
           port: 22
-          local: "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build"
+          local: "build/$BUILD_TARGET/$BUILD_NAME/Build/"
           remote: ${{ secrets.DEPLOYMENT_TARGET_PATH }}
