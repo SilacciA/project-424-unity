@@ -58,7 +58,6 @@ jobs:
           BUILD_TARGET: ${{ matrix.targetPlatform }}
           BUILD_NAME: ${{ matrix.buildName }}
         run: |
-          echo $PWD
           ls -al build/$BUILD_TARGET/$BUILD_NAME
           sudo chown -R $USER:$USER build/$BUILD_TARGET/$BUILD_NAME/Build
           mv "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb" "build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup"
@@ -74,5 +73,5 @@ jobs:
           username: ${{ secrets.DEPLOYMENT_TARGET_USER }}
           password: ${{ secrets.DEPLOYMENT_TARGET_PASSWORD }}
           port: 22
-          local: "build/$BUILD_TARGET/$BUILD_NAME/Build/"
+          local: "$PWD/build/$BUILD_TARGET/$BUILD_NAME/Build/"
           remote: ${{ secrets.DEPLOYMENT_TARGET_PATH }}
