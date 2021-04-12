@@ -59,6 +59,9 @@ jobs:
           BUILD_NAME: ${{ matrix.buildName }}
         run: |
           ls -al .
+          ls -al build/
+          ls -al build/$BUILD_TARGET/
+          ls -al build/$BUILD_TARGET/$BUILD_NAME
           sudo chown -R $USER:$USER /github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build
           mv "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb" "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup"
           sed -e '/abort("To use dlopen/ s/^#*/\/\//' "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb.backup" > "/github/workspace/build/$BUILD_TARGET/$BUILD_NAME/Build/$BUILD_NAME.wasm.framework.unityweb"
