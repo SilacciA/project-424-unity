@@ -73,5 +73,5 @@ jobs:
           username: ${{ secrets.DEPLOYMENT_TARGET_USER }}
           password: ${{ secrets.DEPLOYMENT_TARGET_PASSWORD }}
           port: 22
-          local: "$PWD/build/$BUILD_TARGET/$BUILD_NAME/Build/"
+          local: /home/runner/work/project-424-unity/project-424-unity/build/$BUILD_TARGET/$BUILD_NAME/Build/
           remote: ${{ secrets.DEPLOYMENT_TARGET_PATH }}
